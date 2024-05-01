@@ -3,10 +3,12 @@ import dde
 
 serverName = "Spark"
 topic = "BHP.Quote"
-#topic = "BHP.Depth"
+# topic = "BHP.Depth"
+# topic = "BHP.A.Quote"
+topic = "BHP.History" # EOD values of stock
 
-command = "Price"
-#command = "!BuyCount.BuyVolume.Buy.Sell.SellVolume.SellCount"
+command = "Code.Price.10" # gives u end of day stock price for last 10 days
+# command = "BuyCount.BuyVolume.Buy.Sell.SellVolume.SellCount"
 
 server = dde.CreateServer()
 server.Create("TestClient")
