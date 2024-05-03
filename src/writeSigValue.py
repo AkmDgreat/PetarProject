@@ -22,7 +22,7 @@ start_time = datetime.now().replace(hour=6, minute=30, second=0, microsecond=0)
 end_time = datetime.now().replace(hour=13, minute=0, second=0, microsecond=0)
 
 # writes the data to sig value file
-def writeSigValue():
-    writeCsv.writeCsv("csv/sigValue.csv", getArr("BHP"))
+def writeSigValue(stockName):
+    writeCsv.writeCsv("csv/sigValue.csv", getArr(stockName))
 
-runFunction.run_function_every_t_seconds(30, start_time, end_time, writeSigValue())
+runFunction.run_function_every_t_seconds(30, start_time, end_time, writeSigValue("BHP"), "BHP")
