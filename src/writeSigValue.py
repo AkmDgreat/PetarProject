@@ -1,7 +1,7 @@
-import realTimeData
-import runFunction
+from getDateAndTime import getDate, getPrice
+import runFunctionsEveryTSeconds
 import writeCsv
-from datetime import datetime
+from CONSTANTS import START_TIME, END_TIME
 
 # create a 2d array with given rows and columns
 def createTwoDArray(rows, cols):
@@ -13,16 +13,14 @@ def createTwoDArray(rows, cols):
 # gets the array, which will be used to write data in CSV
 def getArr(stockName):
     arr = createTwoDArray(1, 2)
-    arr[0][0] = realTimeData.getPrice(stockName)
-    arr[0][1] = realTimeData.getDate()
+    arr[0][0] = getPrice(stockName)
+    arr[0][1] = getDate()
     return arr
 
-# Define the starting and ending times
-start_time = datetime.now().replace(hour=6, minute=30, second=0, microsecond=0)
-end_time = datetime.now().replace(hour=13, minute=0, second=0, microsecond=0)
-
 # writes the data to sig value file
-def writeSigValue(stockName):
+def write(stockName):
     writeCsv.writeCsv("csv/sigValue.csv", getArr(stockName))
 
-runFunction.run_function_every_t_seconds(30, start_time, end_time, writeSigValue("BHP"), "BHP")
+def writeSigValue(stockName):
+    runFunctionsEveryTSeconds.runEveryTSeconds(30, START_TIME, END_TIME, write(stockName), stockName)
+

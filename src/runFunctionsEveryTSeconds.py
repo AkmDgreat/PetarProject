@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import time
 
 # runs a function every t seconds, from start_time to end_time
-def run_function_every_t_seconds(t, start_time, end_time, function, stockName):
+def runEveryTSeconds(t, start_time, end_time, function, stockName):
     while True:
         current_time = datetime.now()
 

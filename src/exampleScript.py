@@ -5,19 +5,19 @@ import writeCsv
 
 # trying some thing
 #topic = "BHP.order"
-topic = "BHP.Depth"
-field = "Time.Date.Price"
+topic = "BHP.History"
+# field = "Time.Date.Price"
+field = "Date.First.High.Low.Last.Price.20"
 requestedData = connect.command(topic, field)
 print(requestedData)
-writeCsv.writeCsv("csv/historic.csv", requestedData)
+#writeCsv.writeCsv("csv/historic.csv", requestedData)
 # print(requestedData)
-
 
 
 topic = "ASX.indexValues"
 field = "Time.Date.Price"
 requestedData = connect.command(topic, field)
-# print(requestedData)
+#print(requestedData)
 
 '''
 # Getting the current price of the stock BHP
