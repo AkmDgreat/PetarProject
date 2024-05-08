@@ -22,6 +22,4 @@ def write(stockName):
     writeCsv.writeCsv("csv/sigValue.csv", getArr(stockName))
 
 def writeSigValue(stockName):
-    runFunctionsEveryTSeconds.runEveryTSeconds(TIME_INTERVAL_TO_WRITE_SIG_VALUE, START_TIME, END_TIME, write(stockName), stockName)
-
-writeSigValue("BHP")
+    runFunctionsEveryTSeconds.runEveryTSeconds(TIME_INTERVAL_TO_WRITE_SIG_VALUE, START_TIME, END_TIME, write, stockName)
