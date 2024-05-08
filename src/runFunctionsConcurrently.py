@@ -14,3 +14,14 @@ def runConcurrently(func1, func2):
     thread2.join()
 
     print("Both functions completed.")
+
+from multiprocessing import Process
+def runConcurrently(*fns):
+  proc = []
+  for fn in fns:
+    p = Process(target=fn)
+    p.start()
+    proc.append(p)
+  for p in proc:
+    p.join()
+

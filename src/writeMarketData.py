@@ -1,4 +1,4 @@
-from getDateAndTime import getDate, getPrice
+from getDateAndPrice import getDate, getPrice
 import time
 import writeCsv
 from runFunctionsEveryTSeconds import runEveryTSeconds
@@ -13,7 +13,7 @@ def getArr(stockName):
     arr = createOneDArray(3)
     arr[0] = getPrice(stockName)
     arr[2] = getDate()
-    time.sleep(120)
+    time.sleep(CONSTANTS.TIME_INTERVAL_TO_WRITE_MARKET_DATA)
     arr[1] = getPrice(stockName)
     print(arr)
     return arr
@@ -22,5 +22,5 @@ def getArr(stockName):
 def write(stockName):
     writeCsv.appendCsv(f"csv/{stockName} DATA.csv", getArr(stockName))
 
-def writeMarketDate(stockName): 
+def writeMarketData(stockName): 
     runEveryTSeconds(0, CONSTANTS.START_TIME, CONSTANTS.END_TIME, write, stockName)

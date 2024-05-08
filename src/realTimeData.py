@@ -4,3 +4,5 @@ from runFunctionsConcurrently import runConcurrently
 
 def realTimeData(stockName):
     runConcurrently(writeMarketData(stockName), writeSigValue(stockName))
+
+realTimeData("BHP")
