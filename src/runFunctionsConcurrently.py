@@ -1,9 +1,9 @@
 import threading
 
-def runConcurrently(func1, func2):
+def runConcurrently(func1, func2, *arg):
     # Create threads
-    thread1 = threading.Thread(target=func1)
-    thread2 = threading.Thread(target=func2)
+    thread1 = threading.Thread(target=func1, args=[arg])
+    thread2 = threading.Thread(target=func2, args=[arg])
 
     # Start threads
     thread1.start()
@@ -14,22 +14,6 @@ def runConcurrently(func1, func2):
     thread2.join()
 
     print("Both functions completed.")
-
-def runConcurrently(func1, func2):
-    # Create threads
-    thread1 = threading.Thread(target=func1)
-    thread2 = threading.Thread(target=func2)
-
-    # Start threads
-    thread1.start()
-    thread2.start()
-
-    # Wait for threads to finish
-    thread1.join()
-    thread2.join()
-
-    print("Both functions completed.")
-
 
 from multiprocessing import Process
 def runConcurrently(*fns):
@@ -57,10 +41,3 @@ def runConcurrently(func1, func2, arg):
     # Wait for both processes to finish
     process1.join()
     process2.join()
-
-if __name__ == "__main__":
-    # Define the argument
-    argument = ...
-    
-    # Call the function to run both functions in parallel
-    run_functions_in_parallel(function1, function2, argument)
