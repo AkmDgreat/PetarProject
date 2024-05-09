@@ -15,7 +15,6 @@ def getArr(stockName):
     arr[2] = getDate()
     time.sleep(CONSTANTS.TIME_INTERVAL_TO_WRITE_MARKET_DATA)
     arr[1] = getPrice(stockName)
-    print(arr)
     return arr
 
 # writes the data to sig value file
